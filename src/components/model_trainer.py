@@ -46,8 +46,33 @@ class ModelTrainer:
                 "KNN": KNeighborsRegressor(),
                 "XGBoost":XGBRegressor()           
             }
+            params = {
+            "Linear regression": {},
+            "Adaboost": {
+                "n_estimators": [50, 100]
+            },
+            "Gradient": {
+                "n_estimators": [100, 200],
+                "learning_rate": [0.05, 0.1]
+            },
+            "Random Forest": {
+                "n_estimators": [100, 200],
+                "max_depth": [None, 10]
+            },
+            "decision tree": {
+                "max_depth": [None, 5, 10]
+            },
+            "KNN": {
+                "n_neighbors": [3, 5, 7]
+            },
+            "XGBoost": {
+                "n_estimators": [100],
+                "learning_rate": [0.1]
+            }
+            }
 
-            model_report = evaluate_models(X_train,X_test,y_train,y_test,models)
+
+            model_report = evaluate_models(X_train,X_test,y_train,y_test,models,params)
         
         
             #to get the best score from dict
